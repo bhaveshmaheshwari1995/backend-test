@@ -1,0 +1,18 @@
+### Dot files ###
+.*
+
+### Git ###
+!/.gitignore
+!/.gitmodules
+
+### Logs ###
+logs
+*.log
+
+### Runtime data ###
+pids
+*.pid
+*.seed
+
+### NPM modules ###
+node_modules

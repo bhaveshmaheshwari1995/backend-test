@@ -86,3 +86,44 @@ Hints and advisory for problem 3:
 $rm -rf node_modules/
 $npm install
 ```
+
+
+## Solution
+Use  `npm start` to start the application 
+
+USERS MODULE
+Use below apis to manage users
+
+GET     /user/{user_id}
+Response: details of user
+
+DELETE  /user/{user_id}
+
+PUT     /user/{user_id}
+Request:
+min one parameter is required
+{
+	"has_depositted":true,
+	"wallet_balance":1200,
+	"number_of_deposits":5
+}
+
+you can use above PUT API to add new user by providing all fields 
+
+RE MODULE
+`````
+Use below API to validate users for given expression
+
+POST  /checkUser
+
+Request:
+{
+  "expr": "depositted_users AND number_of_deposits < 30 AND wallet_balance > 1000 AND wallet_balance < 1200 ",
+  "user_id": 1
+}
+
+## Note:
+1. Maintain space between each operator and operand
+2. list of available operators - ["AND", "OR", "NOT", ">", "<", "=="]. To add more operators add it to config file.
+3. list of available operators - ["depositted_users", "number_of_deposits", "wallet_balance"]
+

@@ -1,12 +1,19 @@
 'use strict';
 import routes from './api';
-
 const Hapi = require('hapi');
+const Redis = require ('./util/redis')
+
+const config = require('./config')
+const logger = require('./logger')
+
+global.redisClient = new Redis({
+    hostPortString: config.get('redisHost')
+}, logger)
 
 // Create a server with a host and port
 const server = Hapi.server({ 
     host: 'localhost', 
-    port: 8001
+    port: config.get('port')
 });
 
 // Add the route
@@ -23,6 +30,7 @@ async function start() {
         process.exit(1);
     }
 
+    logger.info('Server running at:', server.info.uri);
     console.log('Server running at:', server.info.uri);
 };
 
